@@ -1,0 +1,275 @@
+{
+  "titulo": "Alucinação da Inteligência Artificial",
+  "autor": "Gabriel Lins Alves do Nascimento",
+  "grafo": {
+    "vertices": 16,
+    "arestas": 22,
+    "distribuicao_vertices": {
+      "Conceito": 8,
+      "Erro": 4,
+      "Fato": 3,
+      "Suposição": 1
+    },
+    "distribuicao_arestas": {
+      "Fato": 20,
+      "Suposição": 2
+    },
+    "confianca_media": 0.867,
+    "confianca_min": 0.6,
+    "confianca_max": 0.95
+  },
+  "nos": [
+    {
+      "id": "IA",
+      "label": "Inteligência Artificial",
+      "classe": "Conceito",
+      "descricao": "Sistema computacional baseado em padrões estatísticos"
+    },
+    {
+      "id": "LLM",
+      "label": "Modelo de Linguagem (LLM)",
+      "classe": "Conceito",
+      "descricao": "Modelo que gera texto por probabilidade"
+    },
+    {
+      "id": "ALUCINACAO",
+      "label": "Alucinação",
+      "classe": "Erro",
+      "descricao": "Resposta plausível, porém incorreta ou inexistente"
+    },
+    {
+      "id": "PADRAO_EST",
+      "label": "Padrão Estatístico",
+      "classe": "Conceito",
+      "descricao": "Base de inferência dos LLMs"
+    },
+    {
+      "id": "GRAFO",
+      "label": "Grafo G=(V,E)",
+      "classe": "Conceito",
+      "descricao": "Estrutura matemática para representar conexões"
+    },
+    {
+      "id": "ONTOLOGIA",
+      "label": "Ontologia",
+      "classe": "Conceito",
+      "descricao": "Camada semântica que atribui significado"
+    },
+    {
+      "id": "FATO",
+      "label": "Fato",
+      "classe": "Fato",
+      "descricao": "Informação verificada e verdadeira"
+    },
+    {
+      "id": "SUPOSICAO",
+      "label": "Suposição",
+      "classe": "Suposição",
+      "descricao": "Conexão plausível mas não verificada"
+    },
+    {
+      "id": "ERRO_SEM",
+      "label": "Erro Semântico",
+      "classe": "Erro",
+      "descricao": "Conexão estruturalmente válida, semanticamente incorreta"
+    },
+    {
+      "id": "CONFIANCA",
+      "label": "Peso de Confiança",
+      "classe": "Conceito",
+      "descricao": "Nível de certeza atribuído a uma aresta"
+    },
+    {
+      "id": "CAMADA_SEM",
+      "label": "Camada Semântica",
+      "classe": "Conceito",
+      "descricao": "Integração entre grafo e ontologia"
+    },
+    {
+      "id": "PROP_ERRO",
+      "label": "Propagação de Erro",
+      "classe": "Erro",
+      "descricao": "Disseminação de informações incorretas no sistema"
+    },
+    {
+      "id": "INTERP",
+      "label": "Modelo Interpretável",
+      "classe": "Fato",
+      "descricao": "Sistema confiável com distinção fato/erro"
+    },
+    {
+      "id": "CLASSIF",
+      "label": "Classificação de Conexões",
+      "classe": "Fato",
+      "descricao": "Processo de categorizar relações do grafo"
+    },
+    {
+      "id": "AMB",
+      "label": "Ambiguidade",
+      "classe": "Erro",
+      "descricao": "Falta de clareza semântica nas respostas"
+    },
+    {
+      "id": "CONF_IA",
+      "label": "Confiabilidade da IA",
+      "classe": "Conceito",
+      "descricao": "Grau de precisão e veracidade do sistema"
+    }
+  ],
+  "arestas": [
+    {
+      "de": "IA",
+      "para": "LLM",
+      "relacao": "instancia",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    },
+    {
+      "de": "LLM",
+      "para": "PADRAO_EST",
+      "relacao": "opera_com",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    },
+    {
+      "de": "LLM",
+      "para": "ALUCINACAO",
+      "relacao": "pode_gerar",
+      "confianca": 0.9,
+      "tipo": "Fato"
+    },
+    {
+      "de": "PADRAO_EST",
+      "para": "ALUCINACAO",
+      "relacao": "causa",
+      "confianca": 0.85,
+      "tipo": "Fato"
+    },
+    {
+      "de": "ALUCINACAO",
+      "para": "ERRO_SEM",
+      "relacao": "manifesta_como",
+      "confianca": 0.9,
+      "tipo": "Fato"
+    },
+    {
+      "de": "ALUCINACAO",
+      "para": "PROP_ERRO",
+      "relacao": "leva_a",
+      "confianca": 0.8,
+      "tipo": "Fato"
+    },
+    {
+      "de": "ALUCINACAO",
+      "para": "AMB",
+      "relacao": "gera",
+      "confianca": 0.75,
+      "tipo": "Fato"
+    },
+    {
+      "de": "GRAFO",
+      "para": "CONFIANCA",
+      "relacao": "contem",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    },
+    {
+      "de": "GRAFO",
+      "para": "CAMADA_SEM",
+      "relacao": "integra",
+      "confianca": 0.9,
+      "tipo": "Fato"
+    },
+    {
+      "de": "ONTOLOGIA",
+      "para": "CAMADA_SEM",
+      "relacao": "fornece",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    },
+    {
+      "de": "ONTOLOGIA",
+      "para": "FATO",
+      "relacao": "classifica",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    },
+    {
+      "de": "ONTOLOGIA",
+      "para": "SUPOSICAO",
+      "relacao": "classifica",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    },
+    {
+      "de": "ONTOLOGIA",
+      "para": "ERRO_SEM",
+      "relacao": "classifica",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    },
+    {
+      "de": "CAMADA_SEM",
+      "para": "CLASSIF",
+      "relacao": "permite",
+      "confianca": 0.9,
+      "tipo": "Fato"
+    },
+    {
+      "de": "CAMADA_SEM",
+      "para": "INTERP",
+      "relacao": "produz",
+      "confianca": 0.88,
+      "tipo": "Fato"
+    },
+    {
+      "de": "CLASSIF",
+      "para": "CONF_IA",
+      "relacao": "aumenta",
+      "confianca": 0.85,
+      "tipo": "Fato"
+    },
+    {
+      "de": "INTERP",
+      "para": "CONF_IA",
+      "relacao": "melhora",
+      "confianca": 0.9,
+      "tipo": "Fato"
+    },
+    {
+      "de": "CONFIANCA",
+      "para": "SUPOSICAO",
+      "relacao": "representa",
+      "confianca": 0.7,
+      "tipo": "Suposição"
+    },
+    {
+      "de": "PROP_ERRO",
+      "para": "CONF_IA",
+      "relacao": "reduz",
+      "confianca": 0.8,
+      "tipo": "Fato"
+    },
+    {
+      "de": "AMB",
+      "para": "CONF_IA",
+      "relacao": "compromete",
+      "confianca": 0.75,
+      "tipo": "Fato"
+    },
+    {
+      "de": "SUPOSICAO",
+      "para": "ALUCINACAO",
+      "relacao": "pode_se_tornar",
+      "confianca": 0.6,
+      "tipo": "Suposição"
+    },
+    {
+      "de": "FATO",
+      "para": "INTERP",
+      "relacao": "sustenta",
+      "confianca": 0.95,
+      "tipo": "Fato"
+    }
+  ]
+}

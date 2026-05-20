@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #0d1117;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+<div style="position:fixed;top:0;left:0;right:0;
+            background:linear-gradient(90deg,#0d1117,#161b22);
+            border-bottom:1px solid #30363d;padding:12px 24px;z-index:9999;
+            font-family:monospace;color:#58a6ff;font-size:16px;
+            font-weight:bold;letter-spacing:1px;">
+  🧠 Alucinação da Inteligência Artificial — Grafo de Conhecimento &nbsp;
+  <span style="font-size:11px;color:#8b949e;font-weight:normal">
+    Vértices: 16 &nbsp;|&nbsp; Arestas: 22
+    &nbsp;|&nbsp; Hover para detalhes
+  </span>
+</div>
+
+<div style="position:fixed;bottom:20px;left:20px;background:#161b22;
+            border:1px solid #30363d;border-radius:8px;padding:14px 18px;
+            color:#e6edf3;font-family:monospace;font-size:13px;
+            z-index:9999;line-height:2">
+  <b style="font-size:15px">Legenda</b><br>
+  <span style="color:#3498db">●</span> Conceito &nbsp;
+  <span style="color:#2ecc71">●</span> Fato &nbsp;
+  <span style="color:#f39c12">◆</span> Suposição &nbsp;
+  <span style="color:#e74c3c">▲</span> Erro<br>
+  <span style="border-bottom:2px solid #2ecc71;display:inline-block;width:30px"></span> Fato &nbsp;
+  <span style="border-bottom:2px dashed #f39c12;display:inline-block;width:30px"></span> Suposição /
+  <span style="color:#e74c3c">- -</span> Erro<br>
+  <small>Espessura = confiança da aresta</small>
+</div>
+
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "IA", "label": "Intelig\u00eancia Artificial", "shape": "dot", "size": 24, "title": "\u003cb\u003eIntelig\u00eancia Artificial\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eSistema computacional baseado em padr\u00f5es estat\u00edsticos"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "LLM", "label": "Modelo de Linguagem (LLM)", "shape": "dot", "size": 24, "title": "\u003cb\u003eModelo de Linguagem (LLM)\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eModelo que gera texto por probabilidade"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#e74c3c", "font": {"color": "#e6edf3"}, "id": "ALUCINACAO", "label": "Alucina\u00e7\u00e3o", "shape": "triangle", "size": 30, "title": "\u003cb\u003eAlucina\u00e7\u00e3o\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Erro\u003c/i\u003e\u003cbr\u003eResposta plaus\u00edvel, por\u00e9m incorreta ou inexistente"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "PADRAO_EST", "label": "Padr\u00e3o Estat\u00edstico", "shape": "dot", "size": 24, "title": "\u003cb\u003ePadr\u00e3o Estat\u00edstico\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eBase de infer\u00eancia dos LLMs"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "GRAFO", "label": "Grafo G=(V,E)", "shape": "dot", "size": 24, "title": "\u003cb\u003eGrafo G=(V,E)\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eEstrutura matem\u00e1tica para representar conex\u00f5es"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "ONTOLOGIA", "label": "Ontologia", "shape": "dot", "size": 24, "title": "\u003cb\u003eOntologia\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eCamada sem\u00e2ntica que atribui significado"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#2ecc71", "font": {"color": "#e6edf3"}, "id": "FATO", "label": "Fato", "shape": "ellipse", "size": 28, "title": "\u003cb\u003eFato\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Fato\u003c/i\u003e\u003cbr\u003eInforma\u00e7\u00e3o verificada e verdadeira"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#f39c12", "font": {"color": "#e6edf3"}, "id": "SUPOSICAO", "label": "Suposi\u00e7\u00e3o", "shape": "diamond", "size": 26, "title": "\u003cb\u003eSuposi\u00e7\u00e3o\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Suposi\u00e7\u00e3o\u003c/i\u003e\u003cbr\u003eConex\u00e3o plaus\u00edvel mas n\u00e3o verificada"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#e74c3c", "font": {"color": "#e6edf3"}, "id": "ERRO_SEM", "label": "Erro Sem\u00e2ntico", "shape": "triangle", "size": 30, "title": "\u003cb\u003eErro Sem\u00e2ntico\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Erro\u003c/i\u003e\u003cbr\u003eConex\u00e3o estruturalmente v\u00e1lida, semanticamente incorreta"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "CONFIANCA", "label": "Peso de Confian\u00e7a", "shape": "dot", "size": 24, "title": "\u003cb\u003ePeso de Confian\u00e7a\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eN\u00edvel de certeza atribu\u00eddo a uma aresta"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "CAMADA_SEM", "label": "Camada Sem\u00e2ntica", "shape": "dot", "size": 24, "title": "\u003cb\u003eCamada Sem\u00e2ntica\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eIntegra\u00e7\u00e3o entre grafo e ontologia"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#e74c3c", "font": {"color": "#e6edf3"}, "id": "PROP_ERRO", "label": "Propaga\u00e7\u00e3o de Erro", "shape": "triangle", "size": 30, "title": "\u003cb\u003ePropaga\u00e7\u00e3o de Erro\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Erro\u003c/i\u003e\u003cbr\u003eDissemina\u00e7\u00e3o de informa\u00e7\u00f5es incorretas no sistema"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#2ecc71", "font": {"color": "#e6edf3"}, "id": "INTERP", "label": "Modelo Interpret\u00e1vel", "shape": "ellipse", "size": 28, "title": "\u003cb\u003eModelo Interpret\u00e1vel\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Fato\u003c/i\u003e\u003cbr\u003eSistema confi\u00e1vel com distin\u00e7\u00e3o fato/erro"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#2ecc71", "font": {"color": "#e6edf3"}, "id": "CLASSIF", "label": "Classifica\u00e7\u00e3o de Conex\u00f5es", "shape": "ellipse", "size": 28, "title": "\u003cb\u003eClassifica\u00e7\u00e3o de Conex\u00f5es\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Fato\u003c/i\u003e\u003cbr\u003eProcesso de categorizar rela\u00e7\u00f5es do grafo"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#e74c3c", "font": {"color": "#e6edf3"}, "id": "AMB", "label": "Ambiguidade", "shape": "triangle", "size": 30, "title": "\u003cb\u003eAmbiguidade\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Erro\u003c/i\u003e\u003cbr\u003eFalta de clareza sem\u00e2ntica nas respostas"}, {"borderWidth": 2, "borderWidthSelected": 5, "color": "#3498db", "font": {"color": "#e6edf3"}, "id": "CONF_IA", "label": "Confiabilidade da IA", "shape": "dot", "size": 24, "title": "\u003cb\u003eConfiabilidade da IA\u003c/b\u003e\u003cbr\u003e\u003ci\u003eClasse: Conceito\u003c/i\u003e\u003cbr\u003eGrau de precis\u00e3o e veracidade do sistema"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "IA", "label": "instancia", "title": "\u003cb\u003einstancia\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "LLM", "width": 4.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "LLM", "label": "opera_com", "title": "\u003cb\u003eopera_com\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "PADRAO_EST", "width": 4.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "LLM", "label": "pode_gerar", "title": "\u003cb\u003epode_gerar\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 90%\u003cbr\u003eTipo: Fato", "to": "ALUCINACAO", "width": 4.5}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "PADRAO_EST", "label": "causa", "title": "\u003cb\u003ecausa\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 85%\u003cbr\u003eTipo: Fato", "to": "ALUCINACAO", "width": 4.25}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "ALUCINACAO", "label": "manifesta_como", "title": "\u003cb\u003emanifesta_como\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 90%\u003cbr\u003eTipo: Fato", "to": "ERRO_SEM", "width": 4.5}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "ALUCINACAO", "label": "leva_a", "title": "\u003cb\u003eleva_a\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 80%\u003cbr\u003eTipo: Fato", "to": "PROP_ERRO", "width": 4.0}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "ALUCINACAO", "label": "gera", "title": "\u003cb\u003egera\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 75%\u003cbr\u003eTipo: Fato", "to": "AMB", "width": 3.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "GRAFO", "label": "contem", "title": "\u003cb\u003econtem\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "CONFIANCA", "width": 4.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "GRAFO", "label": "integra", "title": "\u003cb\u003eintegra\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 90%\u003cbr\u003eTipo: Fato", "to": "CAMADA_SEM", "width": 4.5}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "ONTOLOGIA", "label": "fornece", "title": "\u003cb\u003efornece\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "CAMADA_SEM", "width": 4.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "ONTOLOGIA", "label": "classifica", "title": "\u003cb\u003eclassifica\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "FATO", "width": 4.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "ONTOLOGIA", "label": "classifica", "title": "\u003cb\u003eclassifica\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "SUPOSICAO", "width": 4.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "ONTOLOGIA", "label": "classifica", "title": "\u003cb\u003eclassifica\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "ERRO_SEM", "width": 4.75}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "CAMADA_SEM", "label": "permite", "title": "\u003cb\u003epermite\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 90%\u003cbr\u003eTipo: Fato", "to": "CLASSIF", "width": 4.5}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "CAMADA_SEM", "label": "produz", "title": "\u003cb\u003eproduz\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 88%\u003cbr\u003eTipo: Fato", "to": "INTERP", "width": 4.4}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "CLASSIF", "label": "aumenta", "title": "\u003cb\u003eaumenta\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 85%\u003cbr\u003eTipo: Fato", "to": "CONF_IA", "width": 4.25}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "INTERP", "label": "melhora", "title": "\u003cb\u003emelhora\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 90%\u003cbr\u003eTipo: Fato", "to": "CONF_IA", "width": 4.5}, {"arrows": "to", "color": "#f39c12", "dashes": true, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "CONFIANCA", "label": "representa", "title": "\u003cb\u003erepresenta\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 70%\u003cbr\u003eTipo: Suposi\u00e7\u00e3o", "to": "SUPOSICAO", "width": 3.5}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "PROP_ERRO", "label": "reduz", "title": "\u003cb\u003ereduz\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 80%\u003cbr\u003eTipo: Fato", "to": "CONF_IA", "width": 4.0}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "AMB", "label": "compromete", "title": "\u003cb\u003ecompromete\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 75%\u003cbr\u003eTipo: Fato", "to": "CONF_IA", "width": 3.75}, {"arrows": "to", "color": "#f39c12", "dashes": true, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "SUPOSICAO", "label": "pode_se_tornar", "title": "\u003cb\u003epode_se_tornar\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 60%\u003cbr\u003eTipo: Suposi\u00e7\u00e3o", "to": "ALUCINACAO", "width": 3.0}, {"arrows": "to", "color": "#2ecc71", "dashes": false, "font": {"align": "middle", "color": "#aaaaaa", "size": 10}, "from": "FATO", "label": "sustenta", "title": "\u003cb\u003esustenta\u003c/b\u003e\u003cbr\u003eConfian\u00e7a: 95%\u003cbr\u003eTipo: Fato", "to": "INTERP", "width": 4.75}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"borderWidth": 2, "borderWidthSelected": 4, "shadow": {"enabled": true, "size": 10, "x": 3, "y": 3}}, "edges": {"arrows": {"to": {"enabled": true, "scaleFactor": 0.8}}, "smooth": {"type": "dynamic"}, "shadow": {"enabled": true}}, "physics": {"forceAtlas2Based": {"gravitationalConstant": -80, "centralGravity": 0.01, "springLength": 180, "springConstant": 0.06}, "solver": "forceAtlas2Based", "stabilization": {"iterations": 200}}, "interaction": {"hover": true, "tooltipDelay": 100, "navigationButtons": true, "keyboard": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
