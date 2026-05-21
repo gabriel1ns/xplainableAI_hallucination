@@ -1,0 +1,12 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes virtuais (opcional, mas recomendado)
+venv/
+.venv/
+
+# Outros comuns
+.pytest_cache/
+.mypy_cache/

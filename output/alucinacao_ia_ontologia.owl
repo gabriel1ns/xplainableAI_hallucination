@@ -5,83 +5,17 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PropErro1">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PropagacaoDeErro"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PropagacaoDeErro">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">PropagacaoDeErro</rdfs:label>
+    <rdfs:comment xml:lang="pt">Disseminação de alucinações pelo sistema</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#AlucinacaoEx2">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">PropErro1</rdfs:label>
-    <rdfs:comment xml:lang="pt">Alucinação aceita como fato em pipeline</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Fato">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Fato</rdfs:label>
-    <rdfs:comment xml:lang="pt">Informação verificada e verdadeira</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#fornece">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">fornece</rdfs:label>
-    <rdfs:comment xml:lang="pt">Ontologia fornece semântica</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Ontologia"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#operaCom">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">operaCom</rdfs:label>
-    <rdfs:comment xml:lang="pt">Sistema opera com um conceito</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">CamadaSemantica</rdfs:label>
-    <rdfs:comment xml:lang="pt">Integração entre grafo e ontologia</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#temPesoConfianca">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">temPesoConfianca</rdfs:label>
-    <rdfs:comment xml:lang="pt">Aresta possui peso de confiança</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Aresta"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaIntegrada">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">CamadaIntegrada</rdfs:label>
-    <rdfs:comment xml:lang="pt">Integração grafo+ontologia</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#grauAmbiguidade">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:label xml:lang="pt">grauAmbiguidade</rdfs:label>
-    <rdfs:comment xml:lang="pt">Grau de ambiguidade [0.0, 1.0]</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">TipoConexao</rdfs:label>
-    <rdfs:comment xml:lang="pt">Classificação semântica de uma aresta do grafo</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Entidade"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Ontologia">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Ontologia</rdfs:label>
-    <rdfs:comment xml:lang="pt">Camada semântica do sistema</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#podeGerar">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">podeGerar</rdfs:label>
-    <rdfs:comment xml:lang="pt">Sistema pode gerar um tipo de conexão</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#integra">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">integra</rdfs:label>
-    <rdfs:comment xml:lang="pt">Grafo integra camada semântica</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Grafo"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
+    <rdfs:label xml:lang="pt">AlucinacaoEx2</rdfs:label>
+    <rdfs:comment xml:lang="pt">Data histórica incorreta</rdfs:comment>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#classifica">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -90,93 +24,29 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Ontologia"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Claude3">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">Claude3</rdfs:label>
-    <rdfs:comment xml:lang="pt">Claude 3 da Anthropic</rdfs:comment>
-    <podeGerar rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#AlucinacaoEx2"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#reduz">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">reduz</rdfs:label>
-    <rdfs:comment xml:lang="pt">Tipo de conexão reduz alguma propriedade</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#permite">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">permite</rdfs:label>
-    <rdfs:comment xml:lang="pt">Camada semântica permite inferências</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Suposicao1">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Suposicao"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">Suposicao1</rdfs:label>
-    <rdfs:comment xml:lang="pt">O modelo compreende o texto</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#causaAlucinacao">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">causaAlucinacao</rdfs:label>
-    <rdfs:comment xml:lang="pt">Causa que origina a alucinação</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#temConexao">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">temConexao</rdfs:label>
-    <rdfs:comment xml:lang="pt">Sistema possui uma conexão no grafo</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#compromete">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">compromete</rdfs:label>
-    <rdfs:comment xml:lang="pt">Tipo de conexão compromete propriedade</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#valorConfianca">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:label xml:lang="pt">valorConfianca</rdfs:label>
-    <rdfs:comment xml:lang="pt">Valor numérico de confiança [0.0, 1.0]</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca">
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">PesoConfianca</rdfs:label>
-    <rdfs:comment xml:lang="pt">Valor numérico [0,1] que expressa certeza de uma aresta</rdfs:comment>
+    <rdfs:label xml:lang="pt">Alucinacao</rdfs:label>
+    <rdfs:comment xml:lang="pt">Subconjunto de erro: resposta plausível mas incorreta</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Ontologia">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">Ontologia</rdfs:label>
+    <rdfs:comment xml:lang="pt">Camada semântica do sistema</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#produz">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">produz</rdfs:label>
-    <rdfs:comment xml:lang="pt">Camada semântica produz sistema interpretável</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ehVerificado">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
-    <rdfs:label xml:lang="pt">ehVerificado</rdfs:label>
-    <rdfs:comment xml:lang="pt">Indica se a conexão foi verificada</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Aresta">
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Aresta</rdfs:label>
-    <rdfs:comment xml:lang="pt">Relação entre dois vértices</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo"/>
+    <rdfs:label xml:lang="pt">ErroSemantico</rdfs:label>
+    <rdfs:comment xml:lang="pt">Conexão estruturalmente válida, semanticamente incorreta</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#GPT4">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">GPT4</rdfs:label>
-    <rdfs:comment xml:lang="pt">GPT-4 da OpenAI</rdfs:comment>
-    <podeGerar rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#AlucinacaoEx1"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">CamadaSemantica</rdfs:label>
+    <rdfs:comment xml:lang="pt">Integração entre grafo e ontologia</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#descricao">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -185,12 +55,11 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Entidade"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#GrafoConhecimento">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Grafo"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">GrafoConhecimento</rdfs:label>
-    <rdfs:comment xml:lang="pt">Grafo G=(V,E) do domínio de IA</rdfs:comment>
-    <integra rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaIntegrada"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Grafo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">Grafo</rdfs:label>
+    <rdfs:comment xml:lang="pt">Estrutura matemática G=(V,E)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#AlucinacaoEx1">
     <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
@@ -202,44 +71,6 @@
     <ehVerificado rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ehVerificado>
     <grauAmbiguidade rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.85</grauAmbiguidade>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Alucinacao</rdfs:label>
-    <rdfs:comment xml:lang="pt">Subconjunto de erro: resposta plausível mas incorreta</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">ConexaoGrafo</rdfs:label>
-    <rdfs:comment xml:lang="pt">Aresta do grafo com peso de confiança</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Vertice">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Vertice</rdfs:label>
-    <rdfs:comment xml:lang="pt">Nó do grafo representando conceito ou entidade</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#AlucinacaoEx2">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">AlucinacaoEx2</rdfs:label>
-    <rdfs:comment xml:lang="pt">Data histórica incorreta</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#instanciaDE">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">instanciaDE</rdfs:label>
-    <rdfs:comment xml:lang="pt">LLM é instância de SistemaIA</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoAlto">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">PesoAlto</rdfs:label>
-    <rdfs:comment xml:lang="pt">Peso 0.95 — alta confiança</rdfs:comment>
-    <valorConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.95</valorConfianca>
-  </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#OntologiaAI">
     <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Ontologia"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -249,41 +80,19 @@
     <classifica rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#FatoVerificado1"/>
     <classifica rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Suposicao1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PropagacaoDeErro">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">PropagacaoDeErro</rdfs:label>
-    <rdfs:comment xml:lang="pt">Disseminação de alucinações pelo sistema</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#GPT4">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">GPT4</rdfs:label>
+    <rdfs:comment xml:lang="pt">GPT-4 da OpenAI</rdfs:comment>
+    <podeGerar rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#AlucinacaoEx1"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Suposicao">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Suposicao</rdfs:label>
-    <rdfs:comment xml:lang="pt">Conexão plausível, não verificada</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">ModeloLinguagem</rdfs:label>
-    <rdfs:comment xml:lang="pt">LLM — modelo baseado em padrões estatísticos</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Grafo">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Grafo</rdfs:label>
-    <rdfs:comment xml:lang="pt">Estrutura matemática G=(V,E)</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#manifestaComo">
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#causaAlucinacao">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="pt">manifestaComo</rdfs:label>
-    <rdfs:comment xml:lang="pt">Alucinação se manifesta como erro</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Entidade">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">Entidade</rdfs:label>
-    <rdfs:comment xml:lang="pt">Classe raiz da ontologia</rdfs:comment>
+    <rdfs:label xml:lang="pt">causaAlucinacao</rdfs:label>
+    <rdfs:comment xml:lang="pt">Causa que origina a alucinação</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#levadA">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -292,12 +101,25 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
     <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PropagacaoDeErro"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoBaixo">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Claude3">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">PesoBaixo</rdfs:label>
-    <rdfs:comment xml:lang="pt">Peso 0.40 — baixa confiança</rdfs:comment>
-    <valorConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.4</valorConfianca>
+    <rdfs:label xml:lang="pt">Claude3</rdfs:label>
+    <rdfs:comment xml:lang="pt">Claude 3 da Anthropic</rdfs:comment>
+    <podeGerar rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#AlucinacaoEx2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#grauAmbiguidade">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="pt">grauAmbiguidade</rdfs:label>
+    <rdfs:comment xml:lang="pt">Grau de ambiguidade [0.0, 1.0]</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Aresta">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">Aresta</rdfs:label>
+    <rdfs:comment xml:lang="pt">Relação entre dois vértices</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#nomeConceito">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -306,29 +128,123 @@
     <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Gemini">
-    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
-    <rdfs:label xml:lang="pt">Gemini</rdfs:label>
-    <rdfs:comment xml:lang="pt">Gemini do Google</rdfs:comment>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#podeGerar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">podeGerar</rdfs:label>
+    <rdfs:comment xml:lang="pt">Sistema pode gerar um tipo de conexão</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico">
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Suposicao1">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Suposicao"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">Suposicao1</rdfs:label>
+    <rdfs:comment xml:lang="pt">O modelo compreende o texto</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PropErro1">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PropagacaoDeErro"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">PropErro1</rdfs:label>
+    <rdfs:comment xml:lang="pt">Alucinação aceita como fato em pipeline</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#valorConfianca">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="pt">valorConfianca</rdfs:label>
+    <rdfs:comment xml:lang="pt">Valor numérico de confiança [0.0, 1.0]</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoAlto">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">PesoAlto</rdfs:label>
+    <rdfs:comment xml:lang="pt">Peso 0.95 — alta confiança</rdfs:comment>
+    <valorConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.95</valorConfianca>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Fato">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">ErroSemantico</rdfs:label>
-    <rdfs:comment xml:lang="pt">Conexão estruturalmente válida, semanticamente incorreta</rdfs:comment>
+    <rdfs:label xml:lang="pt">Fato</rdfs:label>
+    <rdfs:comment xml:lang="pt">Informação verificada e verdadeira</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <rdfs:label xml:lang="pt">Alucinação da Inteligência Artificial</rdfs:label>
-    <rdfs:comment xml:lang="pt">Representação estrutural e semântica do fenômeno de alucinação em Modelos de Linguagem, via grafos e ontologias.</rdfs:comment>
-    <dc:creator>Gabriel Lins Alves do Nascimento</dc:creator>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoBaixo">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">PesoBaixo</rdfs:label>
+    <rdfs:comment xml:lang="pt">Peso 0.40 — baixa confiança</rdfs:comment>
+    <valorConfianca rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.4</valorConfianca>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA">
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Vertice">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">SistemaIA</rdfs:label>
-    <rdfs:comment xml:lang="pt">Sistema de Inteligência Artificial</rdfs:comment>
+    <rdfs:label xml:lang="pt">Vertice</rdfs:label>
+    <rdfs:comment xml:lang="pt">Nó do grafo representando conceito ou entidade</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">ConexaoGrafo</rdfs:label>
+    <rdfs:comment xml:lang="pt">Aresta do grafo com peso de confiança</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#temConexao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">temConexao</rdfs:label>
+    <rdfs:comment xml:lang="pt">Sistema possui uma conexão no grafo</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConexaoGrafo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#integra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">integra</rdfs:label>
+    <rdfs:comment xml:lang="pt">Grafo integra camada semântica</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Grafo"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">TipoConexao</rdfs:label>
+    <rdfs:comment xml:lang="pt">Classificação semântica de uma aresta do grafo</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Entidade"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#reduz">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">reduz</rdfs:label>
+    <rdfs:comment xml:lang="pt">Tipo de conexão reduz alguma propriedade</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#produz">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">produz</rdfs:label>
+    <rdfs:comment xml:lang="pt">Camada semântica produz sistema interpretável</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Suposicao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">Suposicao</rdfs:label>
+    <rdfs:comment xml:lang="pt">Conexão plausível, não verificada</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#temPesoConfianca">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">temPesoConfianca</rdfs:label>
+    <rdfs:comment xml:lang="pt">Aresta possui peso de confiança</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Aresta"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#fornece">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">fornece</rdfs:label>
+    <rdfs:comment xml:lang="pt">Ontologia fornece semântica</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Ontologia"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">ConceituoIA</rdfs:label>
+    <rdfs:comment xml:lang="pt">Conceitos fundamentais de Inteligência Artificial</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Entidade"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#FatoVerificado1">
     <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Fato"/>
@@ -337,10 +253,94 @@
     <rdfs:comment xml:lang="pt">LLMs operam por padrão estatístico</rdfs:comment>
     <ehVerificado rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ehVerificado>
   </rdf:Description>
-  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA">
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="pt">ConceituoIA</rdfs:label>
-    <rdfs:comment xml:lang="pt">Conceitos fundamentais de Inteligência Artificial</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Entidade"/>
+    <rdfs:label xml:lang="pt">ModeloLinguagem</rdfs:label>
+    <rdfs:comment xml:lang="pt">LLM — modelo baseado em padrões estatísticos</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#compromete">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">compromete</rdfs:label>
+    <rdfs:comment xml:lang="pt">Tipo de conexão compromete propriedade</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#PesoConfianca">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">PesoConfianca</rdfs:label>
+    <rdfs:comment xml:lang="pt">Valor numérico [0,1] que expressa certeza de uma aresta</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaIntegrada">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">CamadaIntegrada</rdfs:label>
+    <rdfs:comment xml:lang="pt">Integração grafo+ontologia</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="pt">Alucinação da Inteligência Artificial</rdfs:label>
+    <rdfs:comment xml:lang="pt">Representação estrutural e semântica do fenômeno de alucinação em Modelos de Linguagem, via grafos e ontologias.</rdfs:comment>
+    <dc:creator>Gabriel Lins Alves do Nascimento</dc:creator>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#manifestaComo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">manifestaComo</rdfs:label>
+    <rdfs:comment xml:lang="pt">Alucinação se manifesta como erro</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Alucinacao"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ErroSemantico"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ehVerificado">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="pt">ehVerificado</rdfs:label>
+    <rdfs:comment xml:lang="pt">Indica se a conexão foi verificada</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#TipoConexao"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#GrafoConhecimento">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Grafo"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">GrafoConhecimento</rdfs:label>
+    <rdfs:comment xml:lang="pt">Grafo G=(V,E) do domínio de IA</rdfs:comment>
+    <integra rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaIntegrada"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">SistemaIA</rdfs:label>
+    <rdfs:comment xml:lang="pt">Sistema de Inteligência Artificial</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#operaCom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">operaCom</rdfs:label>
+    <rdfs:comment xml:lang="pt">Sistema opera com um conceito</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Gemini">
+    <rdf:type rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="pt">Gemini</rdfs:label>
+    <rdfs:comment xml:lang="pt">Gemini do Google</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#instanciaDE">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">instanciaDE</rdfs:label>
+    <rdfs:comment xml:lang="pt">LLM é instância de SistemaIA</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ModeloLinguagem"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#SistemaIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#permite">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="pt">permite</rdfs:label>
+    <rdfs:comment xml:lang="pt">Camada semântica permite inferências</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#CamadaSemantica"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#ConceituoIA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/gabriel/ontologies/alucinacao_ia#Entidade">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="pt">Entidade</rdfs:label>
+    <rdfs:comment xml:lang="pt">Classe raiz da ontologia</rdfs:comment>
   </rdf:Description>
 </rdf:RDF>
