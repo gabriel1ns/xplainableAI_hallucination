@@ -1,3 +1,6 @@
 pyvis==0.3.2
 rdflib==7.6.0
 owlready2==0.50
+streamlit==1.38.0
+networkx==3.3
+pandas==2.2.2

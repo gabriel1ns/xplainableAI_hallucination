@@ -55,3 +55,45 @@ def build_network(nodes: list[Node], edges: list[Edge]) -> Network:
         )
 
     return net
+
+
+def build_network_plain(nodes: list[Node], edges: list[Edge]) -> Network:
+    """Retorna a MESMA rede, mas sem nenhuma informação semântica aplicada:
+    todos os vértices e todas as arestas usam o mesmo estilo, exatamente
+    como pede a visão 'Grafo Estrutural' do Projeto Final (2.2) — sem tipo,
+    sem categoria, sem contexto."""
+
+    net = Network(
+        height=GRAPH_HEIGHT,
+        width=GRAPH_WIDTH,
+        bgcolor=GRAPH_BG,
+        font_color=GRAPH_FONT,
+        directed=True,
+        notebook=False,
+    )
+    net.set_options(PHYSICS_OPTIONS)
+
+    for node in nodes:
+        net.add_node(
+            node.id,
+            label=node.label,
+            title=node.label,
+            color="#6e7681",
+            shape="dot",
+            size=22,
+            font={"color": "#ffffff", "size": 13, "face": "monospace"},
+            borderWidth=1,
+        )
+
+    for edge in edges:
+        net.add_edge(
+            edge.source,
+            edge.target,
+            title=f"{edge.source} -> {edge.target}",
+            color="#6e7681",
+            dashes=False,
+            width=1.5,
+            font={"color": "#8b949e", "size": 9, "align": "middle"},
+        )
+
+    return net

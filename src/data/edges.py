@@ -26,6 +26,8 @@ EDGES: list[Edge] = [
     Edge("IA",         "LLM",        "instancia",        0.95, "Fato"),
     Edge("LLM",        "PADRAO_EST", "opera_com",        0.95, "Fato"),
     Edge("LLM",        "ALUCINACAO", "pode_gerar",       0.90, "Fato"),
+    Edge("LLM",        "FATO",       "pode_confirmar",   0.90, "Fato"),
+    Edge("LLM",        "SUPOSICAO",  "pode_assumir",     0.65, "Suposição"),
     Edge("PADRAO_EST", "ALUCINACAO", "causa",            0.85, "Fato"),
     Edge("ALUCINACAO", "ERRO_SEM",   "manifesta_como",   0.90, "Fato"),
     Edge("ALUCINACAO", "PROP_ERRO",  "leva_a",           0.80, "Fato"),
