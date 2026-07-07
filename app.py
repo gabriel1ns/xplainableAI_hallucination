@@ -29,7 +29,7 @@ from data.claims import CLAIMS
 from data.knowledge_base import KNOWLEDGE_BASE
 from config.settings import PROJECT_TITLE, PROJECT_AUTHOR, NODE_STYLES, EDGE_STYLES
 from graph.builder import build_network, build_network_plain
-from graph.detector import build_kb_graph, classify_claim
+from graph.detector import build_kb_graph, classify_claim, build_kb_network
 from graph.semantics import (
     TIPO_PENALTY,
     build_structural_graph,
@@ -271,6 +271,15 @@ with tab_detector:
             f"(Gabarito interno esperava '{claim.veredito_esperado}' — "
             "confira os fatos cadastrados se isso te surpreendeu.)"
         )
+
+    st.markdown("#### A afirmação, dentro do grafo da base de conhecimento")
+    st.caption(
+        "Cinza = fatos da KB não envolvidos nesta checagem · "
+        "Verde = fato que confirma ou corrige a afirmação · "
+        "Vermelho tracejado = o que foi alegado e contradiz a KB · "
+        "Laranja tracejado = alegação sem fato correspondente na KB."
+    )
+    render_pyvis(build_kb_network(claim, resultado))
 
 st.divider()
 st.caption(

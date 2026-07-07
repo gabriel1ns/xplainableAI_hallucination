@@ -30,9 +30,11 @@ pra saber se é verdade) ou a alegação à luz da base de conhecimento
 from __future__ import annotations
 
 import networkx as nx
+from pyvis.network import Network
 
 from data.claims import Claim
 from data.knowledge_base import KBFact, KNOWLEDGE_BASE
+from config.settings import GRAPH_HEIGHT, GRAPH_WIDTH, GRAPH_BG, GRAPH_FONT, PHYSICS_OPTIONS
 
 
 def build_kb_graph(facts: list[KBFact] = KNOWLEDGE_BASE) -> nx.MultiDiGraph:
@@ -94,3 +96,72 @@ def classify_claim(claim: Claim, G: nx.MultiDiGraph | None = None) -> dict:
         "evidencia": evidencia,
         "bate_com_esperado": veredito == claim.veredito_esperado,
     }
+
+
+def build_kb_network(claim: Claim, resultado: dict, facts: list[KBFact] = KNOWLEDGE_BASE) -> Network:
+    """Desenha o grafo da KB (cinza, neutro) e sobrepõe a aresta da afirmação
+    avaliada, colorida conforme o veredito:
+
+        Fato       -> aresta real da KB fica verde e mais grossa
+        Erro       -> aresta real (correta) fica verde; a alegação falsa
+                      aparece como uma aresta extra, vermelha e tracejada
+        Suposição  -> aresta extra cinza/tracejada, pois a KB não tem essa
+                      relação — ela é desenhada só para mostrar o que foi
+                      alegado, sem confirmação
+    """
+    net = Network(
+        height=GRAPH_HEIGHT, width=GRAPH_WIDTH,
+        bgcolor=GRAPH_BG, font_color=GRAPH_FONT,
+        directed=True, notebook=False,
+    )
+    net.set_options(PHYSICS_OPTIONS)
+
+    nodes = set()
+    for f in facts:
+        nodes.add(f.sujeito)
+        nodes.add(f.objeto)
+    nodes.add(claim.sujeito)
+    nodes.add(claim.objeto_alegado)
+
+    for n in nodes:
+        destaque = n in (claim.sujeito, claim.objeto_alegado)
+        net.add_node(
+            n, label=n, title=n,
+            color="#58a6ff" if destaque else "#6e7681",
+            shape="dot", size=26 if destaque else 20,
+            font={"color": "#ffffff", "size": 13},
+        )
+
+    for f in facts:
+        eh_a_evidencia = (
+            f.sujeito == claim.sujeito
+            and f.predicado == claim.predicado
+        )
+        color = "#2ecc71" if eh_a_evidencia else "#6e7681"
+        width = 3 if eh_a_evidencia else 1.2
+        net.add_edge(
+            f.sujeito, f.objeto,
+            label=f.predicado, title=f.predicado,
+            color=color, width=width,
+            font={"color": "#8b949e", "size": 9, "align": "middle"},
+        )
+
+    veredito = resultado["veredito"]
+    if veredito == "Erro":
+        # aresta extra: a alegação falsa, sobreposta em vermelho tracejado
+        net.add_edge(
+            claim.sujeito, claim.objeto_alegado,
+            label=f"{claim.predicado} (alegado)", title="Contradiz a KB",
+            color="#e74c3c", dashes=True, width=2.5,
+            font={"color": "#e74c3c", "size": 9},
+        )
+    elif veredito == "Suposição":
+        net.add_edge(
+            claim.sujeito, claim.objeto_alegado,
+            label=f"{claim.predicado} (não verificável)", title="Sem fato correspondente na KB",
+            color="#f39c12", dashes=True, width=2,
+            font={"color": "#f39c12", "size": 9},
+        )
+    # Fato: a evidência já foi destacada em verde no loop acima, nada a adicionar.
+
+    return net
